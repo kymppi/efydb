@@ -1,8 +1,8 @@
 import { getToken } from "./token";
-import { PUBLIC_API_URL } from "$env/static/public";
+import { env } from "$env/dynamic/public";
 
 const fetchJson = async (path: string, options: any) => {
-    let response = await fetch(new URL(path, PUBLIC_API_URL), {
+    let response = await fetch(new URL(path, env.PUBLIC_API_URL), {
         ...options,
         headers: {
             "Authorization": getToken(),
@@ -13,7 +13,7 @@ const fetchJson = async (path: string, options: any) => {
 }
 
 export const fetchFormJson = async (path: string, options: any) => {
-    let response = await fetch(new URL(path, PUBLIC_API_URL), {
+    let response = await fetch(new URL(path, env.PUBLIC_API_URL), {
         ...options,
         headers: {
             "Authorization": getToken(),
